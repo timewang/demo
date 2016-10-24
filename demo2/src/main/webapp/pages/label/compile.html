@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写标签</title>
+
+
+    <link th:href="@{/script/bootstrap/css/bootstrap.min.css}" href="/script/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/script/bootstrap/css/bootstrapValidator.css}" href="/script/bootstrap/css/bootstrapValidator.css" rel="stylesheet">
+    <link th:href="@{/script/bootstrap/css/bootstrap-datetimepicker.min.css}" href="/script/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:class="container">
+        <div th:class="row">
+            <div class="page-header">
+                <h2>随便写点啥</h2>
+            </div>
+            <form th:action="@{/label}" method="post" class="form-horizontal"  th:object="${label}" id="label">
+                <input id="_method" th:name="_method" th:value="${_method}" type="hidden">
+                <input id="id" th:name="id" th:field="*{id}" value="" type="hidden">
+               <!-- <input name="username" th:value="wangzhongfu" type="hidden">-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label control-label-farmer">*名称</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control input-lg" id="value" value="" th:field="*{value}" />
+                        <span id="acceptorInfo" class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5 col-md-offset-3">
+                        <button id ="saveBtn" type="submit" class="btn btn-primary btn-lg btn-block">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/script/jquery/jquery-1.10.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/script/bootstrap/js/bootstrap.min.js}"></script>
+<!--    <script src="${base}/js/component/bootstrap/js/jquery.pin.js"></script>-->
+<script type="text/javascript" th:src="@{/script/bootstrap/js/bootstrapValidator.min.js}"></script>
+<script type="text/javascript" th:src="@{/script/bootstrap/js/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/script/tmpl/jquery.tmpl.js}"></script>
+<script>
+    $.ajax({
+        crossDomain : true,
+        url:"https://snailgary.org/mobile",
+        type:"get",
+        dataType:"json",
+        headers: {
+            "Access-Control-Allow-Origin" : "https://snailgary.org/mobile",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+        }
+    }).done(function(result) {
+
+    });
+</script>
+<!--    <script type="text/javascript" src="${base}/js/component/select2/js/select2.full.min.js"></script>
+
+    <script type="text/javascript" src="${base}/js/component/select2/css/select2.css"></script>-->
+</html>

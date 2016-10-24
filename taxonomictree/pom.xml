@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+  <parent>
+		<groupId>com.webhybird</groupId>
+		<artifactId>pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom/pom.xml</relativePath>
+	</parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.webhybird</groupId>
+  <artifactId>taxonomictree</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>taxonomictree Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <com.webhybird.framework.verison>1.0-SNAPSHOT</com.webhybird.framework.verison>
+  </properties>
+
+  <dependencies>
+    <dependency>
+		<groupId>com.webhybird</groupId>
+		<artifactId>framework</artifactId>
+		<version>${com.webhybird.framework.verison}</version>
+	</dependency>
+      <!-- https://mvnrepository.com/artifact/org.jasig.cas.client/cas-client-core -->
+      <dependency>
+          <groupId>org.jasig.cas.client</groupId>
+          <artifactId>cas-client-core</artifactId>
+          <version>3.4.1</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/freemarker/freemarker -->
+      <dependency>
+          <groupId>freemarker</groupId>
+          <artifactId>freemarker</artifactId>
+          <version>2.3.9</version>
+      </dependency>
+
+  </dependencies>
+
+</project>
