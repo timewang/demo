@@ -258,7 +258,9 @@
         <module>../demo2</module>
         <module>../cachetest_one</module>
         <module>../cachetest_two</module>
-        <!--   <module>../pingan</module>-->
+        <module>../spring-batch.demo</module>
+        <!--   <mod
+        ule>../pingan</module>-->
     </modules>
 
 </project>
