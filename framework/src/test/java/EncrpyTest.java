@@ -1,7 +1,10 @@
 import com.webhybird.framework.encryption.Coder;
+import com.webhybird.framework.encryption.RSACoder;
 import org.junit.Test;
 
 import java.security.MessageDigest;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * ***********************************************************
@@ -16,6 +19,48 @@ public class EncrpyTest {
 
     //16进制下数字到字符的映射数组
     private static String[] hexDigits = new String[]{"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"};
+
+    @Test
+    public void encrpyByKey() throws Exception {
+
+        Map<String, Object> key = RSACoder.initKey();
+
+        String privateKeey = RSACoder.getPrivateKey(key);
+        String publicKeey = RSACoder.getPublicKey(key);
+
+        System.out.println("key：" + privateKeey);
+        //公钥加密
+        byte[] e = RSACoder.encryptByPublicKey("123456@qq.com".getBytes(),publicKeey);
+
+        String s = bytesToString(e);
+
+        System.out.println(s);
+        //私钥解密
+        byte[] e1 = RSACoder.decryptByPrivateKey(e,privateKeey);
+
+        String s1 = bytesToString(e1);
+
+        System.out.println(s1);
+
+
+        //System.out.println(new String(e));
+        System.out.println(new String(e1));
+
+
+    }
+
+    private String bytesToString(byte[] obj) {
+        String ret = "";
+        for (byte b : obj) {
+            ret += String.valueOf(b);
+        }
+        return ret;
+    }
+
+    @Test
+    public void genuuid(){
+        System.out.println(UUID.randomUUID());
+    }
 
     @Test
     public void md5Test() throws Exception {
