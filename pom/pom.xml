@@ -240,7 +240,7 @@
 
     <modules>
         <!--
-        <module>../sso</module>
+
     <module>../framework</module>
         <module>../demo</module>
         <module>../sso-common</module>
@@ -250,6 +250,9 @@
         <module>../thymeleafdemo</module>
  <module>../framework</module>
         -->
+        <module>../sso</module>
+        <module>../sso-common</module>
+        <module>../sso-client</module>
         <module>../framework</module>
         <module>../demo</module>
         <module>../spring-boot-demo</module>
