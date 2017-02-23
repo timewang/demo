@@ -12,6 +12,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cachetest_one</artifactId>
+    <packaging>jar</packaging>
+    <modules>
+        <module>../dropwizard-demo</module>
+    </modules>
     <properties>
         <com.webhybird.framework.verison>1.0-SNAPSHOT</com.webhybird.framework.verison>
     </properties>

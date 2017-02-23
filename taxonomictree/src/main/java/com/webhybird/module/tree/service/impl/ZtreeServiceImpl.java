@@ -61,7 +61,7 @@ public class ZtreeServiceImpl extends BaseService implements ZtreeService {
      */
     @Override
     public void updateZtree(ZtreeEntity ztreeEntity) {
-        this.ztreeRepositories.update(ztreeEntity);
+       // this.ztreeRepositories.update(ztreeEntity);
     }
 
     /**

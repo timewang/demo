@@ -73,7 +73,7 @@ public class LabelServiceImpl implements LabelService {
     @Override
     public void updateLabel(Label label) {
         label.setCreateDate(new Date());
-        this.labelRepository.update(label);
+        //this.labelRepository.update(label);
     }
 
     @Override
@@ -88,13 +88,15 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public Page<Label> findLabelPage(Label label, Pageable pageable) {
-        return this.labelRepository.findAll(this.getLabelAndSpecification(label), pageable);
+        //return this.labelRepository.findAll(this.getLabelAndSpecification(label), pageable);
+        return null;
     }
 
     @Override
     public Page<Label> findLabelPage(QueryParameter queryParameter, Pageable pageable) {
         Specification<Label> labelSpecification = new SpecificationImpl<>(queryParameter.getParameters(),queryParameter.getType());
-        return this.labelRepository.findAll(labelSpecification,pageable);
+       // return this.labelRepository.findAll(labelSpecification,pageable);
+        return null;
     }
 
     @Override

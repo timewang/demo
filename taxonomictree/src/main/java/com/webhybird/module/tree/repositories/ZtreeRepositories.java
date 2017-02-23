@@ -1,7 +1,7 @@
 package com.webhybird.module.tree.repositories;
 
-import com.webhybird.framework.base.BaseRepositories;
 import com.webhybird.module.tree.entity.ZtreeEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by wangzhongfu on 2015/5/27.
  */
-public interface ZtreeRepositories extends BaseRepositories<ZtreeEntity,String> {
+public interface ZtreeRepositories extends JpaRepository<ZtreeEntity,String> {
     /**
      * 根据pid和type 查询
      * 按时间倒排

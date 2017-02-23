@@ -18,12 +18,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Created by wangzhongfu on 2015/5/5.
@@ -38,10 +40,10 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
     @Autowired
     private Environment env;
 
-    /**
+  /*  *//**
      * freemarker 视图配置
      * @return
-     */
+     *//*
     @Bean
     public ViewResolver freemarkerViewResolver(){
         FreeMarkerViewResolver freeMarkerViewResolver = new FreeMarkerViewResolver();
@@ -50,10 +52,10 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
         return freeMarkerViewResolver;
     }
 
-    /**
+    *//**
      * freemarker 配置
      * @return
-     */
+     *//*
     @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer(){
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
@@ -64,10 +66,10 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
         return freeMarkerConfigurer;
     }
 
-    /**
+    *//**
      *freemarker 配置项
      * @param properties
-     */
+     *//*
     private void setFreemarkerProperties(Properties properties){
         properties.put("template_update_delay", this.env.getProperty("freemarker.template_update_delay"));
         properties.put("default_encoding", this.env.getProperty("freemarker.default_encoding"));
@@ -76,6 +78,33 @@ public class SpringMvcConfig extends WebMvcConfigurationSupport {
         properties.put("date_format", this.env.getProperty("freemarker.date_format"));
         properties.put("template_exception_handler", this.env.getProperty("freemarker.template_exception_handler"));
         properties.put("auto_import", this.env.getProperty("freemarker.auto_import"));
+    }*/
+
+    @Bean
+    public ViewResolver viewResolver(){
+        ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
+        thymeleafViewResolver.setTemplateEngine(this.templateEngine());
+        thymeleafViewResolver.setContentType("text/html;charset=UTF-8");
+        return thymeleafViewResolver;
+    }
+
+    @Bean
+    public TemplateEngine templateEngine(){
+       /* TemplateEngine templateEngine = new TemplateEngine();*/
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(this.templateResolver());
+        return templateEngine;
+    }
+
+    @Bean
+    public TemplateResolver templateResolver(){
+        TemplateResolver templateResolver = new ServletContextTemplateResolver();
+        templateResolver.setPrefix(this.env.getProperty("spring.thymeleaf.prefix"));
+        templateResolver.setSuffix(this.env.getProperty("spring.thymeleaf.suffix"));
+        templateResolver.setTemplateMode(this.env.getProperty("spring.thymeleaf.mode"));
+        templateResolver.setCharacterEncoding(this.env.getProperty("spring.thymeleaf.encoding"));
+        templateResolver.setCacheable(Boolean.parseBoolean(this.env.getProperty("spring.thymeleaf.cache")));
+        return templateResolver;
     }
 
     /**

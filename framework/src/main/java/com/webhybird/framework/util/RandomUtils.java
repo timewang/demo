@@ -14,14 +14,14 @@ public class RandomUtils {
 	private static SecureRandom random = new SecureRandom();
 
 	/**
-	 * 封装JDK自带的UUID, 通过Random数字生成, 中间�?分割.
+	 * 封装JDK自带的UUID, 通过Random数字生成, 中间-分割.
 	 */
 	public static String uuid() {
 		return UUID.randomUUID().toString();
 	}
 
 	/**
-	 * 封装JDK自带的UUID, 通过Random数字生成, 中间�?分割.
+	 * 封装JDK自带的UUID, 通过Random数字生成, 去掉中间-分割.
 	 */
 	public static String uuid2() {
 		return UUID.randomUUID().toString().replaceAll("-", "");

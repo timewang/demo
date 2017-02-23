@@ -28,7 +28,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages= "com.webhybird.module.*.repositories",repositoryFactoryBeanClass = MyRepositoryFactoryBean.class)
+@EnableJpaRepositories(basePackages= "com.webhybird.module.*.repositories")
 public class PersistenceConfig {
 
     @Autowired
