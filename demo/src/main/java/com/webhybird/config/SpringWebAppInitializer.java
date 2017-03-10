@@ -1,7 +1,5 @@
 package com.webhybird.config;
 
-import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;
-import org.jasig.cas.client.util.HttpServletRequestWrapperFilter;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
@@ -9,7 +7,12 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.util.Log4jConfigListener;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 /**
  * Created by wangzhongfu on 2015/5/5.
@@ -52,23 +55,23 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
         FilterRegistration.Dynamic httpServletRequestWrapperFilterrRegistration = servletContext.addFilter("CAS HttpServletRequest Wrapper Filter",httpServletRequestWrapperFilterFilterProxy);
         httpServletRequestWrapperFilterrRegistration.addMappingForUrlPatterns(null,false,"/*");
 
-        DelegatingFilterProxy singleSignOutFilterProxy = new DelegatingFilterProxy();
+       /* DelegatingFilterProxy singleSignOutFilterProxy = new DelegatingFilterProxy();
         singleSignOutFilterProxy.setTargetBeanName("singleSignOutFilter");
         FilterRegistration.Dynamic singleSignOutFilterRegistration = servletContext.addFilter("CAS Single Sign Out Filter",singleSignOutFilterProxy);
-        singleSignOutFilterRegistration.addMappingForUrlPatterns(null,false,"/*");
+        singleSignOutFilterRegistration.addMappingForUrlPatterns(null,false,"*//*");
 
 
         DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
         delegatingFilterProxy.setTargetBeanName("authenticationFilter");
         FilterRegistration.Dynamic filterRegistration = servletContext.addFilter("CAS Authentication Filter",delegatingFilterProxy);
-        filterRegistration.addMappingForUrlPatterns(null,false,"/*");
+        filterRegistration.addMappingForUrlPatterns(null,false,"*//*");
 
         DelegatingFilterProxy ticketFilter = new DelegatingFilterProxy();
         ticketFilter.setTargetBeanName("ticketValidationFilter");
         FilterRegistration.Dynamic ticketGilterRegistration = servletContext.addFilter("CAS Validation Filter",ticketFilter);
-        ticketGilterRegistration.addMappingForUrlPatterns(null,false,"/*");
+        ticketGilterRegistration.addMappingForUrlPatterns(null,false,"*//*");
 
-        servletContext.addListener(new SingleSignOutHttpSessionListener());
+        servletContext.addListener(new SingleSignOutHttpSessionListener());*/
 
 
         /**

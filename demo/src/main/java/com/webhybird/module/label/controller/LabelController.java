@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
@@ -81,6 +82,18 @@ public class LabelController extends ThymeleafBaseController {
     public String upload(Model model){
         model.addAttribute("_method","POST");
         return "upload";
+    }
+
+    @RequestMapping(value = "vl/openapi")
+    @ResponseBody
+    public Label openapi(){
+        String a = this.request.getHeader("testHeader");
+        Cookie[] cookies = this.request.getCookies();
+        Cookie cookie = new Cookie("sdfasdfsdaf","saldkfjksldafjlkasd");
+        this.response.addCookie(cookie);
+        Label label = new Label();
+        label.setValue("open api 数据");
+        return label;
     }
 
     @RequestMapping(value = "uploadImage",method = RequestMethod.POST)

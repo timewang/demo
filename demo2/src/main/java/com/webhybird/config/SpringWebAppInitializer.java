@@ -1,13 +1,16 @@
 package com.webhybird.config;
 
-import javax.servlet.*;
-
-import com.webhybird.oauth.Oauth2AuthorFilter;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.util.Log4jConfigListener;
+
+import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 /**
  * Created by wangzhongfu on 2015/5/5.
@@ -34,13 +37,13 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 
         servletContext.addListener(new Log4jConfigListener());//
         servletContext.setInitParameter("log4jConfigLocation", "classpath:/log4j.properties");
-        servletContext.setInitParameter("webAppRootKey", "spring_springmvc_jpademo.root");
+        servletContext.setInitParameter("webAppRootKey", "spring_springmvc_jpademo.root2");
 
-        Oauth2AuthorFilter oauth2AuthorFilter = new Oauth2AuthorFilter();
+      /*  Oauth2AuthorFilter oauth2AuthorFilter = new Oauth2AuthorFilter();
         oauth2AuthorFilter.setAccessTokenCheckUrl("http://localhost:8080/oauth2/checkAccessToken");
         FilterRegistration.Dynamic oauth2filterRegistration = servletContext.addFilter(
                 "oauth2AuthorFilter", oauth2AuthorFilter);
-        oauth2filterRegistration.addMappingForUrlPatterns(null, false, "/vl/openapi/*");
+        oauth2filterRegistration.addMappingForUrlPatterns(null, false, "/vl/openapi*//*");*/
 
         super.onStartup(servletContext);
 

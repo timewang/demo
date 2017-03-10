@@ -43,8 +43,10 @@ public class ThymeleafBaseController {
         this.response = response;
         this.request = request;
         this.session = request.getSession();
-        this.response.setHeader("Access-Control-Allow-Origin","https://snailgary.org/mobile");
+        // http://test.lakala.com
+        this.response.setHeader("Access-Control-Allow-Origin","*");
         this.response.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+        this.response.addHeader("Access-Control-Allow-Credentials","true");
        /* String base = request.getContextPath();
         String fullPath = request.getScheme() + "://" + request.getServerName()
                 + base;

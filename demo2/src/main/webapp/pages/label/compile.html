@@ -43,7 +43,7 @@
 <script type="text/javascript" th:src="@{/script/bootstrap/js/bootstrap-datetimepicker.min.js}"></script>
 <script type="text/javascript" th:src="@{/script/tmpl/jquery.tmpl.js}"></script>
 <script>
-    $.ajax({
+    /*$.ajax({
         crossDomain : true,
         url:"https://snailgary.org/mobile",
         type:"get",
@@ -51,6 +51,23 @@
         headers: {
             "Access-Control-Allow-Origin" : "https://snailgary.org/mobile",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+        }
+    }).done(function(result) {
+     "Access-Control-Allow-Origin" : "https://snailgary.org/mobile",
+     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+    });*/
+
+    $.ajax({
+        //withCredentials : true,
+        url:"http://localhost/demo/vl/openapi",
+        type:"get",
+        dataType:"json",
+        /*headers: {
+            //'testHeader':'ewrwerwer',
+            'Cookie':'test=test'
+        },*/
+        xhrFields: {
+            withCredentials: true
         }
     }).done(function(result) {
 

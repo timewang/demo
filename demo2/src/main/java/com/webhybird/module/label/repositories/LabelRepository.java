@@ -1,10 +1,10 @@
 package com.webhybird.module.label.repositories;
 
-import com.webhybird.framework.base.BaseRepositories;
 import com.webhybird.module.label.entity.Label;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
@@ -18,7 +18,7 @@ import java.util.List;
  * LabelRepositoryCustom ： 客户端行为接口，用于实现自己的查询逻辑
  * Created by wangzhongfu on 2015/5/5.
  */
-public interface LabelRepository extends BaseRepositories<Label,String>,LabelRepositoryCustom {
+public interface LabelRepository extends JpaRepository<Label,String>,LabelRepositoryCustom {
 
     @Query("select new Label(l.id,l.value) from Label l ")
     List<Label> findAllByC();
@@ -35,7 +35,7 @@ public interface LabelRepository extends BaseRepositories<Label,String>,LabelRep
 
     @Modifying
     @Query("update Label label set label.value = ?1 where label.id = ?2")
-    void updateValueById(String value,String id);
+    void updateValueById(String value, String id);
 
     /**
      * 分页查询指定字段会出问题
@@ -74,6 +74,6 @@ public interface LabelRepository extends BaseRepositories<Label,String>,LabelRep
 
     List<Label> findByTestOrderByCreateDateDesc(String username);
 
-    List<Label> findByTestAndValue(String username,String value);
+    List<Label> findByTestAndValue(String username, String value);
 
 }

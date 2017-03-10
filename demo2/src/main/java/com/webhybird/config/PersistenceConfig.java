@@ -30,7 +30,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "demoUserAuditorAware")
-@EnableJpaRepositories(basePackages= "com.webhybird.module.*.repositories",repositoryFactoryBeanClass = MyRepositoryFactoryBean.class)
+@EnableJpaRepositories(basePackages= "com.webhybird.module.*.repositories")
 public class PersistenceConfig {
 
     @Autowired

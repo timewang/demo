@@ -13,12 +13,12 @@ import java.util.List;
  */
 public interface LabelRepositoryCustom {
 
-    List<Label> findLableCustom(String value,String username);
+    List<Label> findLableCustom(String value, String username);
     List<LabelVO> findAllLabelVO();
 
     List<LabelVO> findAllLabelVO2();
 
     Page<Label> findLabelPage(Pageable pageable);
 
-    Page<Label> findLabelPage(QueryParameter queryParameter,Pageable pageable);
+    Page<Label> findLabelPage(QueryParameter queryParameter, Pageable pageable);
 }
